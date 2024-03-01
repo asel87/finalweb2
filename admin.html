@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1, h2 {
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+   
+
+/* Specific style for delete buttons */
+.delete-btn {
+  background-color: #dc3545; /* Bootstrap 'danger' color for example */
+}
+
+/* Hover effect for delete buttons */
+.delete-btn:hover {
+  background-color: #c82333; /* A slightly darker shade for hover state */
+}
+    button {
+      width: 60%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 14px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      width: 60%;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Admin Dashboard</h1>
+  <h2>List of Registered Users:</h2>
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Verified</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- User rows will be inserted here -->
+    </tbody>
+  </table>
+  <center>
+    <h2>Create New User:</h2>
+  </center>
+  <center>
+  <div class="form-container">
+   
+   
+
+   
+    <form id="create-user-form">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <select id="role">
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button type="submit">Create User</button>
+    </form>
+  </div>
+</center>
+
+
+  <script>
+    // Fetch and display content awaiting moderation
+    
+   
+
+
+
+
+    async function deleteUser(username) {
+      console.log('Deleting user with username:', username); // Output username to console for debugging
+      if (!confirm('Are you sure you want to delete this user?')) return;
+
+      try {
+        const response = await fetch(`/api/users/${username}`, { method: 'DELETE' }); // Update URL to include username
+        if (response.ok) {
+          alert('User deleted successfully.');
+          fetchUsers(); // Refresh the list of users
+        } else {
+          const errorText = await response.text(); // Get the error message from the response
+          throw new Error(errorText || 'Error deleting user.');
+        }
+      } catch (error) {
+        console.error('Error deleting user:', error.message);
+        alert('Error deleting user: ' + error.message);
+      }
+    }
+
+    async function updateUser(username) {
+      try {
+        // Navigate to the update form with the username as a query parameter
+        window.location.href = `/update-user.html?username=${username}`;
+      } catch (error) {
+        console.error('Error updating user:', error.message);
+        alert('Error updating user: ' + error.message);
+      }
+    }
+    async function saveUserChanges(username) {
+  const email = document.getElementById('emailInput').value;
+  const password = document.getElementById('passwordInput').value;
+
+  try {
+    const response = await fetch(`/api/users/${username}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    if (response.ok) {
+      alert('User updated successfully.');
+      // Handle successful update, maybe redirect or update the UI
+    } else {
+      const errorText = await response.text();
+      throw new Error(errorText || 'Error updating user.');
+    }
+  } catch (error) {
+    console.error('Error updating user:', error.message);
+    alert('Error updating user: ' + error.message);
+  }
+}
+
+
+    async function fetchUsers() {
+      try {
+        const response = await fetch('/api/users');
+        if (response.ok) {
+          const users = await response.json();
+          const tableBody = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+          tableBody.innerHTML = '';
+          users.forEach(user => {
+            let row = `<tr>
+                         <td>${user.username}</td>
+                         <td>${user.email}</td>
+                         <td>${user.role}</td>
+                         <td>${user.verified}</td>
+                         <td>
+                          <button class="delete-btn" onclick="deleteUser('${user.username}')">Delete</button>
+                           <button onclick="updateUser('${user.username}')">Update</button>
+                         </td>
+                       </tr>`;
+            tableBody.innerHTML += row;
+          });
+        } else {
+          throw new Error('Error fetching users.');
+        }
+      } catch (error) {
+        console.error('Error loading users:', error.message);
+      }
+    }
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const createUserForm = document.getElementById('create-user-form');
+      createUserForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const role = document.getElementById('role').value;
+        const newUser = { username, email, password, role };
+        try {
+          const response = await fetch('/api/auth/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newUser)
+          });
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            fetchUsers();
+          } else {
+            throw new Error('Error creating user.');
+          }
+        } catch (error) {
+          console.error('Error creating user:', error.message);
+          alert('Error creating user.');
+        }
+      });
+  
+      fetchUsers();
+    });
+  </script>
+</body>
+</html>

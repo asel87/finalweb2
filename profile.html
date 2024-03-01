@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>User Profile</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> <!-- Use full version of jQuery -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    /* Add your custom styles here */
+    .navbar-nav.ml-auto > li {
+      margin-right: 15px; /* Adjust the margin as needed */
+    }
+
+    .profile-section {
+      margin-top: 20px;
+    }
+
+    .account-settings-section {
+      margin-top: 20px;
+    }
+
+    .edit-mode {
+      display: none;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .profile-section {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-section img {
+  width: 150px; /* Set your desired width */
+  height: 150px; /* Set your desired height */
+  display: block;
+  margin: 0 auto; /* Center the image */
+  border-radius: 50%;
+}
+
+
+    .profile-section p {
+      margin: 10px 0;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .account-settings-section {
+      display: none;
+    }
+
+    .nav-pills {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav-pills .nav-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background-color: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    .tab-content {
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+    }
+    .nav__links a {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav__links a:after {
+  z-index: -1;
+  background-color:  rgba(128, 171, 128, 0.947); 
+  display: block;
+  content: "";
+  height: 2px; 
+  width: 0%;
+  -webkit-transition: width .3s ease-in-out;
+  -moz--transition: width .3s ease-in-out;
+  transition: width .3s ease-in-out;
+}
+.nav__links a:hover:after,
+.nav__links a:focus:after {
+  width: 100%;
+}
+   
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    color:black;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 10%;
+   
+  }
+  
+  .logo {
+    cursor: pointer;
+  }
+
+  .cta{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: aliceblue;
+    text-decoration: none;
+  }
+  
+  .nav__links a,
+  .overlay__content a {
+    
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px; 
+    color: black;
+    text-decoration: none;
+  }
+  
+  .nav__links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav__links li {
+    padding: 0px 20px;
+  }
+  
+  .nav__links li a {
+    transition: color 0.3s ease 0s;
+  }
+  
+  .nav__links li a:hover {
+    color:rgba(36, 35, 56, 0.853);
+  }
+  
+  </style>
+</head>
+
+<body>
+  
+  <header>
+    <h1></span>Skillex<span class="green-dot">.</h1>
+  
+    <nav>
+        <ul class="nav__links">
+            <li><a href="#">Find passion</a></li>
+            <li><a href="#">Skills</a></li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Categories</a></li>
+        </ul>
+    </nav>
+    <div class="cta-container">
+        <a class="cta" href="index.html">Log in</a>
+       
+    
+        <a class="cta" href="#">Free trial</a>
+    </div>
+  </header>
+
+  <div class="container mt-5">
+    <h2>Welcome to your Profile</h2>
+    
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+      <!-- Display user profile information here -->
+      <img id="profilePhoto" src="" alt="Profile Photo" class="rounded-circle">
+      <p id="name"></p>
+      <p id="surname"></p>
+      <p id="email"></p>
+      <p id="phoneNumber"></p>
+      <p id="bio"></p>
+      <p id="address"></p> <!-- Add this line -->
+      <p id="links"></p> <!-- Add this line -->
+    
+      <!-- Edit button to switch to edit mode -->
+      <button class="btn-primary" onclick="editProfile()">Edit Profile</button>
+      <button class="btn btn-danger" onclick="deleteAccount()">Delete My Account</button>
+    
+  </form>
+</div>
+
+
+
+    </div>
+    
+  
+    <!-- Account Settings Section -->
+    <div class="account-settings-section edit-mode">
+      <div class="container">
+        <div class="row gutters-sm">
+          <div class="col-md-4 d-none d-md-block">
+            <div class="card">
+              <div class="card-body">
+                <nav class="nav flex-column nav-pills nav-gap-y-1">
+                  <a href="#profile" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded active">
+                    Profile Information
+                  </a>
+                  <a href="#account" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                    Account Settings
+                  </a>
+                  <a href="#security" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                    Security
+                  </a>
+                  <a href="#notification" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                    Notification
+                  </a>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header border-bottom mb-3 d-flex d-md-none">
+                <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
+                  <li class="nav-item">
+                    <a href="#profile" data-toggle="tab" class="nav-link has-icon active">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#account" data-toggle="tab" class="nav-link has-icon">Account</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#security" data-toggle="tab" class="nav-link has-icon">Security</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#notification" data-toggle="tab" class="nav-link has-icon">Notification</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body tab-content">
+                <!-- PROFILE SETTINGS -->
+                <div class="tab-pane" id="profile">
+                  <h6>PROFILE SETTINGS</h6>
+                  <hr>
+
+                  <form>
+                    <div class="form-group">
+                      <label class="d-block">Profile Photo</label>
+                      <input type="file" class="form-control-file" id="editProfilePhoto">
+                    </div>
+                    <div class="form-group">
+                      <label class="d-block">Name</label>
+                      <input type="text" class="form-control" placeholder="Enter your name" id="editName">
+                    </div>
+                    <div class="form-group">
+                      <label class="d-block">Surname</label>
+                      <input type="text" class="form-control" placeholder="Enter your surname" id="editSurname">
+                    </div>
+                    <div class="form-group">
+                      <label class="d-block">Email</label>
+                      <input type="email" class="form-control" placeholder="Enter your email" id="editEmail">
+                    </div>
+                    <div class="form-group">
+                      <label class="d-block">Phone Number</label>
+                      <input type="tel" class="form-control" placeholder="Enter your phone number" id="editPhoneNumber">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="updateProfile()">Update Profile</button>
+                    <button type="reset" class="btn btn-light">Reset Changes</button>
+                  </form>
+                </div>
+
+                
+                
+                <div class="tab-pane" id="account">
+                  <h6>ACCOUNT SETTINGS</h6>
+                  <hr>
+                  <form>
+                    <div class="form-group">
+                      <label class="d-block">Address</label>
+                      <input type="text" class="form-control" placeholder="Enter your address" id="editAddress">
+                    </div>
+                    <div class="form-group">
+                      <label class="d-block">Bio</label>
+                      <textarea class="form-control" placeholder="Enter your bio" id="editBio"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label class="d-block">Links</label>
+                      <input type="text" class="form-control" placeholder="Enter your links" id="editLinks">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="updateAccount()">Update Account</button>
+
+                    <button type="reset" class="btn btn-light">Reset Changes</button>
+                  </form>
+                </div>
+
+                <!-- SECURITY SETTINGS -->
+                <div class="tab-pane" id="security">
+                  <h6>SECURITY SETTINGS</h6>
+                  <hr>
+                  <form id = "passwordForm">
+                    <div class="form-group">
+                      <label for="currentPassword">Current Password:</label><br>
+                      <input type="password" id="currentPassword" name="currentPassword"><br>
+                      <label for="newPassword">New Password:</label><br>
+                      <input type="password" id="newPassword" name="newPassword"><br>
+                      <label for="confirmNewPassword">Confirm New Password:</label><br>
+                      <input type="password" id="confirmNewPassword" name="confirmNewPassword"><br><br>
+                    </div>
+                      <button type="button" onclick="updatePassword()">Update Password</button>
+                    <button type="reset" class="btn btn-light">Reset Changes</button>
+                  </form>
+                </div>
+
+                <!-- NOTIFICATION SETTINGS -->
+                <div class="tab-pane" id="notification">
+                  <h6>NOTIFICATION SETTINGS</h6>
+                  <hr>
+                  <form>
+                    <div class="form-group">
+                      <label class="d-block">Activity</label>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="commentNotification">
+                        <label class="form-check-label" for="commentNotification">Email me when someone comments on my article</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="answerNotification">
+                        <label class="form-check-label" for="answerNotification">Email me when someone answers on my forum thread</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="followNotification">
+                        <label class="form-check-label" for="followNotification">Email me when someone follows me</label>
+                      </div>
+                      <button type="button" class="btn btn-primary" onclick="updateAccount()">Update Account</button>
+                      <button type="reset" class="btn btn-light">Reset Changes</button>
+                    </div>
+                   
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+  
+
+function loadUserData() {
+  var userData = JSON.parse(localStorage.getItem("userData")) || {};
+
+  // Populate profile section with data
+  $("#name").text(userData.name || "");
+  $("#surname").text(userData.surname || "");
+  $("#email").text(userData.email || "");
+  $("#phoneNumber").text(userData.phoneNumber || "");
+  $("#bio").text(userData.bio || "");
+  $("#address").text(userData.address || "");
+  $("#links").text(userData.links || "");
+  
+  // Display profile photo if available
+  if (userData.profilePhoto) {
+    $("#profilePhoto").attr("src", userData.profilePhoto);
+  }
+}
+
+function editProfile() {
+  // Switch to edit mode
+  $(".profile-section").hide();
+  $(".account-settings-section").show();
+  $(".edit-mode").show();
+}
+
+function updateProfile() {
+  // Code to update the user profile
+  // ...
+
+  // Get updated values from the form
+  var updatedName = $("#editName").val();
+  var updatedSurname = $("#editSurname").val();
+  var updatedEmail = $("#editEmail").val();
+  var updatedPhoneNumber = $("#editPhoneNumber").val();
+  var updatedBio = $("#editBio").val();
+  var updatedAddress = $("#editAddress").val();
+  var updatedLinks = $("#editLinks").val();
+  var updatedProfilePhoto = $("#editProfilePhoto")[0].files[0]; // Get the selected file
+
+  // Update local storage with new values
+  var userData = {
+    name: updatedName,
+    surname: updatedSurname,
+    email: updatedEmail,
+    phoneNumber: updatedPhoneNumber,
+    bio: updatedBio,
+    address: updatedAddress,
+    links: updatedLinks,
+    // Add profile photo data if available
+    profilePhoto: updatedProfilePhoto ? URL.createObjectURL(updatedProfilePhoto) : null
+  };
+
+  localStorage.setItem("userData", JSON.stringify(userData));
+
+  // Update the profile section with the new values
+  $("#name").text(updatedName);
+  $("#surname").text(updatedSurname);
+  $("#email").text(updatedEmail);
+  $("#phoneNumber").text(updatedPhoneNumber);
+  $("#bio").text(updatedBio);
+  $("#address").text(updatedAddress);
+  $("#links").text(updatedLinks);
+
+  // Update the profile photo if a new one is selected
+  if (updatedProfilePhoto) {
+    // Assuming you have an img element with id "profilePhoto" in your profile section
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $("#profilePhoto").attr("src", e.target.result);
+    };
+
+    reader.readAsDataURL(updatedProfilePhoto);
+  }
+
+  // Notify the user about the successful update
+  alert("Profile updated successfully");
+
+  // Switch back to view mode
+  $(".profile-section").show();
+  $(".account-settings-section").hide();
+}
+
+function updateAccount() {
+  // Code to update the account settings
+  // ...
+
+  // Get updated values from the form
+  var updatedAddress = $("#editAddress").val();
+  var updatedBio = $("#editBio").val();
+  var updatedLinks = $("#editLinks").val();
+
+  // Update local storage with new values
+  var userData = JSON.parse(localStorage.getItem("userData")) || {};
+  userData.address = updatedAddress;
+  userData.bio = updatedBio;
+  userData.links = updatedLinks;
+  localStorage.setItem("userData", JSON.stringify(userData));
+
+  // Update the profile section with the new values (if needed)
+  // For example, update the address, bio, and links in the profile section
+  $("#address").text(updatedAddress);
+  $("#bio").text(updatedBio);
+  $("#links").text(updatedLinks);
+
+  // Notify the user about the successful update
+  alert("Account settings updated successfully");
+
+  // Switch back to view mode
+  $(".profile-section").show();
+  $(".account-settings-section").hide();
+}
+
+// Function to switch to other sections
+function switchToSection(sectionId) {
+  // Hide all sections
+  $(".tab-pane").hide();
+  // Show the selected section
+  $(sectionId).show();
+}
+  
+function updatePassword() {
+  // Retrieve the current username (replace this with your actual method of retrieving the username)
+  const username = getCurrentUsername();
+
+  // Get the current password, new password, and confirm new password from the form
+  const currentPassword = $("#currentPassword").val();
+  const newPassword = $("#newPassword").val();
+  const confirmNewPassword = $("#confirmNewPassword").val();
+
+  // Make sure all fields are filled
+  if (!username || !currentPassword || !newPassword || !confirmNewPassword) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  // Send the request to update the password with the username included
+  $.ajax({
+    url: '/api/auth/change-password',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      username: username,
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+      confirmPassword: confirmNewPassword
+    }),
+    success: function(response) {
+      alert(response.message);
+      // Clear the password fields after successful update
+      $("#currentPassword").val("");
+      $("#newPassword").val("");
+      $("#confirmNewPassword").val("");
+    },
+    error: function(xhr, status, error) {
+      console.error('Error updating password:', xhr.responseText);
+      alert('Error updating password: ' + xhr.responseText);
+    }
+  });
+}
+function deleteAccount() {
+  var username = prompt("Please enter your username to confirm account deletion:");
+  if (username === null || username === "") {
+    alert("Username not entered. Account deletion cancelled.");
+    return;
+  }
+
+  if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+    $.ajax({
+      url: `/api/users/${encodeURIComponent(username)}`, // Assuming your API endpoint to delete a user is '/api/users/:username'
+      type: 'DELETE',
+      success: function(response) {
+        alert("Account deleted successfully.");
+        window.location.href = '/login.html'; // Redirect to login after account deletion
+      },
+      error: function(xhr, status, error) {
+        // Improved error handling
+        var errorMessage = xhr.responseJSON && xhr.responseJSON.error ? xhr.responseJSON.error : "An unexpected error occurred";
+        alert('Error deleting user account: ' + errorMessage);
+      }
+    });
+  }
+}
+
+    
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update User</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+
+      color: #333;
+    }
+
+    form {
+      background-color: #fff;
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"], input[type="password"] {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <h1>Update User</h1>
+  </center>
+  
+  <form id="update-user-form">
+    <input type="text" id="email" placeholder="New Email" required>
+    <input type="password" id="password" placeholder="New Password" required>
+    <button type="submit">Save Changes</button>
+  </form>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const updateUserForm = document.getElementById('update-user-form');
+      const urlParams = new URLSearchParams(window.location.search);
+      const username = urlParams.get('username');
+  
+      updateUserForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        saveUserChanges(username, email, password); // Call saveUserChanges with updated parameters
+      });
+    });
+  
+    async function saveUserChanges(username, email, password) {
+      try {
+        const response = await fetch(`/api/users/${username}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+  
+        if (response.ok) {
+          alert('User updated successfully.');
+          window.location.href = '/admin.html'; // Redirect to admin dashboard
+        } else {
+          const errorText = await response.text();
+          throw new Error(errorText || 'Error updating user.');
+        }
+      } catch (error) {
+        console.error('Error updating user:', error.message);
+        alert('Error updating user: ' + error.message);
+      }
+    }
+  </script>
+  
+</body>
+</html>

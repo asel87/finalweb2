@@ -1,0 +1,744 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Questrial&display=swap');
+.nav__links a {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav__links a:after {
+  z-index: -1;
+  background-color:  rgba(128, 171, 128, 0.947); 
+  display: block;
+  content: "";
+  height: 2px; 
+  width: 0%;
+  -webkit-transition: width .3s ease-in-out;
+  -moz--transition: width .3s ease-in-out;
+  transition: width .3s ease-in-out;
+}
+.nav__links a:hover:after,
+.nav__links a:focus:after {
+  width: 100%;
+}
+   
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    color:black;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 10%;
+   
+  }
+  
+  .logo {
+    cursor: pointer;
+  }
+
+  .cta{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: aliceblue;
+    text-decoration: none;
+  }
+  
+  .nav__links a,
+  .overlay__content a {
+    
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px; 
+    color: black;
+    text-decoration: none;
+  }
+  
+  .nav__links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav__links li {
+    padding: 0px 20px;
+  }
+  
+  .nav__links li a {
+    transition: color 0.3s ease 0s;
+  }
+  
+  .nav__links li a:hover {
+    color:rgba(36, 35, 56, 0.853);
+  }
+  
+  .cta-container {
+    margin-right: -auto; /* Adjust the value as needed */
+}
+
+.cta {
+  padding: 12px 30px;
+  margin: 5px;
+  background-color: rgba(36, 35, 56, 0.853); /* RGBA color definition */
+  border: none;
+  font-size: 16px; 
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease 0s; /* Transition property */
+}
+
+
+.cta:hover {
+    background-color: rgba(128, 171, 128, 0.947);
+}
+.green-dot{
+  color: rgba(128, 171, 128, 0.947) ;
+
+}
+/* Your existing styles */
+/* Your existing styles */
+/* Your existing styles */
+
+.gallery-container {
+  position: absolute;
+  top: 125px;
+  right: 0;
+  margin-right: 20px; /* Add right margin */
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Align them vertically at the center */
+  width: 65%; /* Reduce the container width */
+  height: 80vh; /* Reduce the container height */
+  padding: 20px; /* Add spacing between photos and container edges */
+  transition: height 0.6s ease;
+}
+
+.gallery-container .item {
+  height: 100%; /* Adjusted height to fill the container */
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative; /* Ensure relative positioning */
+  margin-right: 30px; /* Add margin between photos */
+  transition: flex 0.6s ease;
+
+}
+
+.gallery-container .item:last-child {
+  margin-right: 0; /* Remove margin for the last item */
+}
+
+.gallery-container .item img {
+  width: 100%; /* Set the image width to 100% */
+  height: 100%; /* Set the image height to 100% */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+.gallery-container .item:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+}
+
+.item .text {
+  position: absolute;
+  top: 80%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  transition: opacity 1s;
+}
+.text {
+  transition: writing-mode 0.6s ease; /* Add transition for smooth change of writing mode */
+}
+
+.horizontal-mode {
+  writing-mode: horizontal-tb !important;
+}
+.content-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 60px;
+  margin-left: 95px;
+  font-family: 'Montserrat',sans-serif;
+  font-weight: 2000px;
+  font-size: 90px;
+  line-height: 1;
+  column-gap: 10px; 
+ 
+}
+
+.gob {
+  display: flex;
+  margin-left: 100px;
+  margin-top: 60px;
+  width: 300px;
+  height: 50px;
+}
+
+.container-1 {
+  width: 370px;
+  display: flex; /* Display the items inside container-1 as a flex container */
+  align-items: center; /* Center items vertically */
+}
+
+.container-1 input#search {
+  width: 270px; /* Adjusted width for the search input */
+  height: 90px;
+  background:#FAF9F6; /* White background for search input */
+  border: 1px solid #F2F3F4  ; /* Add a 1px solid border */
+  font-size: 15pt;
+  color: rgba(36, 35, 56, 0.853);
+  padding-left: 15px; /* Adjusted padding for the search input */
+  
+  
+  
+  transition: border-color 0.3s ease; /* Add a transition for the border color */
+}
+
+.container-1 input#search:focus,
+.container-1 input#search:active {
+  outline: none;
+  border-color: rgba(128, 171, 128, 0.947); /* Change border color when focused */
+}
+.go-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 90px;
+  font-size: 45px;
+  background: rgba(128, 171, 128, 0.947); /* Orange background for the "Go" button */
+  border: none;
+  color: #000000; /* Black color for the text */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.go-button:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+ 
+  background-color: #E59866 ;
+  background-image: linear-gradient(315deg,#E59866   0%,#E59866    74%);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+              7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+              4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.go-button:hover {
+  color: #000000; /* Black color for the text on hover */
+}
+
+.go-button:hover:after {
+  top: auto;
+  bottom: 0;
+  height: 100%;
+}
+
+.go-button:active {
+  top: 2px;
+}
+
+.image-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  border-radius: 15px;
+ /* Adjust the top margin as needed */
+}
+
+.image {
+ 
+  margin: 0 40px; /* Adjust the horizontal margin as needed */
+  max-width: 350px; /* Adjust the maximum width as needed */
+}
+img {
+  border-radius: 15px;
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  margin-top: 15px; /* Adjust the margin as needed */
+}
+
+h2 {
+  margin-top: 12%;
+  text-align: center; /* Adjust the top margin as needed */
+}
+
+.text-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 110px;
+  margin-top: 8%;
+  margin-right: 80px; /* Adjust the margin as needed */
+}
+
+.left-text {
+  font-weight: bold;
+  font-size: 45px;
+  margin-right: 180px;
+}
+
+.right-text {
+  font-size: 25px;
+  margin-right: 110px;
+  margin-left: 150px;
+
+  /* You can add additional styles for the right text here */
+}
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Keep if you want the items to align at the start vertically */
+  flex-wrap: wrap;
+  max-width: 1200px; /* Adjust based on your design preference */
+  margin: auto; /* Centers the container horizontally */
+  padding: 100px 0 50px;
+}
+
+.container2 .card {
+  position: relative;
+  width: calc(33.33% - 60px); /* Adjust the width for three cards with margins */
+  margin: 30px; /* Adjust the margin */
+  box-sizing: border-box;
+  height: 500px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+  inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+  5px 5px 5px rgba(0, 0, 0, 0.2),
+  -5px -5px 15px rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  
+}
+
+.container2 .card .box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #eef0f5;
+  border-radius: 15px;
+  border: 2px solid #e5e7ee;
+  box-shadow: 0 20px 50px rgba(158, 135, 135, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.container2 .card:hover .box{
+  transform: translateY(-50px);
+  box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5);
+
+}
+
+.container2 .card .box .content {
+  padding: 20px;
+  text-align: center;
+}
+
+
+.container2 .card .box .content h3 {
+  font-size: 18px; /* Adjust as needed */
+}
+
+.container2 .card .box .content h4 {
+  font-size: 24px; /* Adjust as needed */
+}
+
+.container2 .card .box .content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.container2 .card .box .content ul li {
+  font-size: 14px; /* Adjust as needed */
+  margin-bottom: 8px;
+  list-style: none;
+}
+
+.container2 .card .box .content h4 sup {
+  font-size: 0.75em;
+  font-weight: 300;
+}
+
+.container2 .card .box .content a {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 15px;
+  font-size: 16px; /* Adjust as needed */
+}
+
+.container2 .card .box .content a:hover {
+  background-color: #0056b3;
+}
+.main-container {
+  position: relative;
+}
+
+.video-container {
+  margin-right: 110px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 90vh;
+}
+
+.background-video {
+  border-radius: 20px;
+  width: 70%;
+  height: auto;
+  margin-top: -10px;
+}
+
+.values-container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+
+
+.text-banner {
+  position: absolute;
+  top: 235%; /* Располагаем наверху контейнера */
+  left: 50%;
+  width: 560px;
+  height: 125px;
+  background-color: #91c05c; /* Adjust the color to match your image */
+  color: #000; /* Adjust text color as needed */
+  font-family: Arial, sans-serif; /* Use any font that suits your design */
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  padding: 10px 0; /* Add some padding */
+}
+
+.text-section {
+  margin: 0 20px; /* Spacing between text and divider */
+  text-align: center; /* Center text */
+}
+
+.text-section h1 {
+  font-size: 30px; /* Large text size */
+  margin: 0; /* Remove default margin */
+  line-height: 1; /* Adjust line-height to suit your design */
+}
+
+.text-section p {
+  margin: 0; /* Remove default margin */
+}
+
+.divider {
+  height: 50px; /* Match the height to your design */
+  border-left: 2px solid #000; /* Add a left border for divider */
+}
+
+
+.value {
+  display: flex;
+  align-items: center;
+  margin-left: 90px;
+  margin-top: 40px;
+
+ 
+}
+
+.value:last-child {
+  margin-bottom: 0;
+}
+
+.icon {
+  background-color: #eee;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 15px;
+  font-size: 24px;
+}
+
+.text {
+  flex: 1;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.description {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}/* Service Section CSS Start */
+/* Service Section CSS */
+/* Service Section CSS */
+.service-header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.service-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.service-header p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.service-header .button {
+  text-decoration: none;
+  color: #333;
+  background-color: white;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.service-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* This will space the boxes evenly */
+  align-items: flex-start; /* Aligns items to the start of the container */
+  gap: 20px; /* This adds space between the boxes */
+  padding: 20px;
+}
+
+.service-box {
+  flex: 1; /* This allows boxes to grow and take up equal space */
+  min-width: 250px; /* Minimum width for each box */
+  max-width: calc(25% - 40px); /* Maximum width for each box, accounting for the gap */
+  background: white;
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-bottom: 20px; /* Space between rows when they wrap */
+}
+
+.service-box h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.service-box p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .service-container {
+    justify-content: center;
+  }
+  .service-box {
+    max-width: 45%; /* Adjust the width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .service-box {
+    max-width: 90%; /* Boxes take more width on very small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .service-box {
+    max-width: 90%; /* Boxes take more width on very small screens */
+  }
+}
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.container h2 {
+  font-size: 5rem;
+  color: #ddd;
+  text-align: center;
+  padding-bottom: 10rem;
+}
+
+footer {
+  width: 100%;
+ 
+  bottom: 0;
+  background: #fff;
+  box-shadow: -5px -0px 2px rgba(0, 0, 0, 0.5);
+}
+
+footer a {
+  text-decoration: none;
+  color: #1c2833;
+}
+
+.footer_content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem 0;
+  grid-gap: 2.5rem;
+}
+
+.footer_headings {
+  color: #000;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.footer_headings::after {
+  content: "";
+  height: 3px;
+  background: #e74c3c;
+  width: 25%;
+  position: absolute;
+  top: 30px;
+  left: 0px;
+}
+
+.first_section img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+.first_section p {
+  padding: 1.5rem 0;
+  text-align: justify;
+}
+
+.social_icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social_icons i {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: #ddd;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transform: translateY(0);
+  transition: all 0.5s ease-in-out;
+  color: #1c2833;
+}
+
+.social_icons i:hover {
+  transform: translateY(-5px);
+}
+
+/* second sections */
+.second_section ul {
+  list-style: none;
+}
+
+.second_section ul li {
+  margin: 1rem 0;
+}
+
+.second_section ul li:first-child {
+  margin-top: 0;
+}
+
+/* third section */
+.third_section ul {
+  list-style: none;
+}
+
+.third_section ul li {
+  margin: 1rem 0;
+  display: flex;
+}
+
+.third_section ul li:first-child {
+  margin-top: 0;
+}
+
+.third_section ul li i {
+  margin-right: 10px;
+  background: #ddd;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.third_section span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* fourth section */
+.form_control input,
+textarea {
+  outline: none;
+  border: none;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.fourth_section button {
+  display: block;
+  width: 100%;
+  outline: none;
+  background: #e74c3c;
+  border: none;
+  color: #fff;
+  padding: 0.6rem 0;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.footer_txt {
+  background: #f0f3f4;
+  padding: 1.1rem 0;
+  text-align: center;
+  box-shadow: -5px -0px 2px rgba(0, 0, 0, 0.5);
+}
+  
